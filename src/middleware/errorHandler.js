@@ -28,7 +28,7 @@ export const errorHandler = (
     message = 'Validation Error';
   } else if (error.name === 'SequelizeUniqueConstraintError') {
     statusCode = 409;
-    message = 'This exam is already submitted';
+    message = 'This resources is already submitted';
   } else if (error.name === 'SequelizeForeignKeyConstraintError') {
     statusCode = 400;
     message = 'Foreign key constraint error';

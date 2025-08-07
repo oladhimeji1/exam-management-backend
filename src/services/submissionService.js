@@ -49,7 +49,7 @@ export class SubmissionService {
       console.error('Auto-grading failed:', error);
     }
 
-    return submission;
+    // return submission;
   }
 
   static async getSubmissionById(submissionIduser) {

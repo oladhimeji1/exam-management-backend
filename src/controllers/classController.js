@@ -16,15 +16,16 @@ export const createClass = async (req, res, next) => {
     const classData = req.body;
     const newClass = await Class.create(classData);
 
-    const createdClass = await Class.findByPk(newClass.id, {
-      include: [
-        { 
-          model: Teacher, 
-          as: 'teacher', 
-          include: [{ model: User, as: 'user' }] 
-        },
-      ],
-    });
+    const createdClass = await Class.findByPk(newClass.id);
+    // , {
+    //   include: [
+    //     { 
+    //       model: Teacher, 
+    //       as: 'teacher', 
+    //       include: [{ model: User, as: 'user' }] 
+    //     },
+    //   ],
+    // }
 
     res.status(201).json({
       success: true,
@@ -53,13 +54,13 @@ export const getClasses = async (req, res, next) => {
 
     const { count, rows } = await Class.findAndCountAll({
       where: whereClause,
-      include: [
-        { 
-          model: Teacher, 
-          as: 'teacher', 
-          include: [{ model: User, as: 'user' }] 
-        },
-      ],
+      // include: [
+      //   { 
+      //     model: Teacher, 
+      //     as: 'teacher', 
+      //     include: [{ model: User, as: 'user' }] 
+      //   },
+      // ],
       limit,
       offset,
       order: [['createdAt', 'DESC']],
@@ -76,19 +77,21 @@ export const getClasses = async (req, res, next) => {
   }
 };
 
-export const getClassById = async (req, rese, next) => {
+export const getClassById = async (req, res, next) => {
   try {
     const { id } = req.params;
     
-    const classData = await Class.findByPk(id, {
-      include: [
-        { 
-          model: Teacher, 
-          as: 'teacher', 
-          include: [{ model: User, as: 'user' }] 
-        },
-      ],
-    });
+    const classData = await Class.findByPk(id);
+
+    // , {
+    //   include: [
+    //     { 
+    //       model: Teacher, 
+    //       as: 'teacher', 
+    //       include: [{ model: User, as: 'user' }] 
+    //     },
+    //   ],
+    // }
 
     if (!classData) {
       throw new AppError('Class not found', 404);
@@ -103,7 +106,7 @@ export const getClassById = async (req, rese, next) => {
   }
 };
 
-export const updateClass = async (req, rese, next) => {
+export const updateClass = async (req, res, next) => {
   try {
     const { id } = req.params;
     const updateData = req.body;
@@ -116,15 +119,17 @@ export const updateClass = async (req, rese, next) => {
 
     await classData.update(updateData);
 
-    const updatedClass = await Class.findByPk(id, {
-      include: [
-        { 
-          model: Teacher, 
-          as: 'teacher', 
-          include: [{ model: User, as: 'user' }] 
-        },
-      ],
-    });
+    const updatedClass = await Class.findByPk(id);
+
+    // , {
+    //   include: [
+    //     { 
+    //       model: Teacher, 
+    //       as: 'teacher', 
+    //       include: [{ model: User, as: 'user' }] 
+    //     },
+    //   ],
+    // }
 
     res.status(200).json({
       success: true,
@@ -136,7 +141,7 @@ export const updateClass = async (req, rese, next) => {
   }
 };
 
-export const deleteClass = async (req, rese, next) => {
+export const deleteClass = async (req, res, next) => {
   try {
     const { id } = req.params;
 

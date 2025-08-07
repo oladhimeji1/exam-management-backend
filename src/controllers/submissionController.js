@@ -28,11 +28,11 @@ export const createSubmission = async (req, res, next) => {
 
     const submission = await SubmissionService.submitExam(examId, studentId, answers, id);
 
-    res.status(201).json({
-      success: true,
-      message: 'Exam submitted successfully',
-      data: submission,
-    });
+    // res.status(201).json({
+    //   success: true,
+    //   message: 'Exam submitted successfully',
+    //   data: submission,
+    // });
   } catch (error) {
     next(error);
   }

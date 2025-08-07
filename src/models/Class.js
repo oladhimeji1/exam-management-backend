@@ -16,14 +16,14 @@ const Class = sequelize.define('Class', {
     type: DataTypes.TEXT,
     allowNull: false,
   },
-  teacherId: {
-    type: DataTypes.UUID,
-    allowNull: true,
-    references: {
-      model: 'teachers',
-      key: 'id',
-    },
-  },
+  // teacherId: {
+  //   type: DataTypes.UUID,
+  //   allowNull: true,
+  //   references: {
+  //     model: 'teachers',
+  //     key: 'id',
+  //   },
+  // },
   studentsCount: {
     type: DataTypes.INTEGER,
     allowNull: false,
@@ -37,9 +37,9 @@ const Class = sequelize.define('Class', {
       unique: true,
       fields: ['name'],
     },
-    {
-      fields: ['teacherId'],
-    },
+    // {
+    //   fields: ['teacherId'],
+    // },
   ],
 });
 

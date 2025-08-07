@@ -18,8 +18,8 @@ Teacher.belongsTo(User, { foreignKey: 'userId', as: 'user' });
 Class.hasMany(Student, { foreignKey: 'classId', as: 'students' });
 Student.belongsTo(Class, { foreignKey: 'classId', as: 'class' });
 
-Teacher.hasMany(Class, { foreignKey: 'teacherId', as: 'classex' });
-Class.belongsTo(Teacher, { foreignKey: 'teacherId', as: 'teacher' });
+// Teacher.hasMany(Class, { foreignKey: 'teacherId', as: 'classex' });
+// Class.belongsTo(Teacher, { foreignKey: 'teacherId', as: 'teacher' });
 
 Teacher.hasMany(Subject, { foreignKey: 'teacherId', as: 'subjectx' });
 Subject.belongsTo(Teacher, { foreignKey: 'teacherId', as: 'teacher' });
